@@ -65,6 +65,7 @@ Simula 50 usuários, onde cada um faz até 20 requisições em até 1 minuto.
 Usuários pares buscam o crocodilo com ID 2.
 Usuários ímpares buscam o crocodilo com ID 1.
 Usa o executor 'per-vu-iterations', garantindo que cada usuário execute um número fixo de iterações.
+
 Explicação do código
 options: Define os cenários e a estratégia de execução.
 listCrocodiles(): Faz uma requisição GET para listar os crocodilos e verifica se o status da resposta é 200.
