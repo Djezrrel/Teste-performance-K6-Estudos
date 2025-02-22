@@ -36,6 +36,13 @@ export default function(){
 });
 }
 
+
+export function handleSummary(data) {
+    return {
+      "index.html": htmlReport(data),
+    };
+  }
+
 //gerando relatorio HTML
 // export function handleSummary(data) {
 //     return {
