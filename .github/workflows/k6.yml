@@ -13,4 +13,4 @@ jobs:
       - name: step 2 - run k6 load test
         uses: grafana/k6-action@v0.2.0
         with: 
-          filename: ProjetoK6/projeto1K6.js
+          filename: ProjetoK6-API/projeto1K6.js
