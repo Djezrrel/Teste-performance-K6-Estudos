@@ -10,20 +10,25 @@ jobs:
       - name: step 1 - checkout
         uses: actions/checkout@v3
 
-      - name: step 2 - run k6 load test
-        uses: grafana/k6-action@v0.2.0
-        with: 
-          filename: ProjetoK6-API/projeto1K6.js
+      - name: step 2 - run k6 load test and generate report
+        run: |
+          k6 run ProjetoK6-API/projeto1K6.js --out json=report.json
+          mv report.js report.json || true  # Renomeia o arquivo caso tenha o nome errado
+          npm install -g k6-reporter
+          k6-reporter report.json index.html
 
-      - run: ls & mkdir report & mv index.html report
-      
-      - name: step 3 - upload artifact
+      - name: step 3 - organize report
+        run: |
+          mkdir -p report
+          mv index.html report/
+
+      - name: step 4 - upload artifact
         uses: actions/upload-artifact@v4
         with: 
           name: relatorio de testes de performance
           path: report
       
-      - name: step 4 - publish report
+      - name: step 5 - publish report
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
