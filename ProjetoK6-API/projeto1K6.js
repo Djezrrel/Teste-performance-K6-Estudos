@@ -37,6 +37,7 @@ export default function(){
 }
 
 
+//gera relatorio para WorFlow
 export function handleSummary(data) {
     return {
       "index.html": htmlReport(data),
